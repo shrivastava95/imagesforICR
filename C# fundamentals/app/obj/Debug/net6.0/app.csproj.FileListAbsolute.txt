@@ -13,3 +13,6 @@ C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\app.pdb
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\app.genruntimeconfig.cache
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\ref\app.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\RestSharp.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\app.csproj.CopyComplete
