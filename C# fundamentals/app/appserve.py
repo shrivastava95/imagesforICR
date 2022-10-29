@@ -17,11 +17,13 @@ def csharp_python_restfulapi_json():
     simple c# test to call python restful api web service
     """
     try:  
-        # get request json object
-        request_json = request.get_json()      
+        request_json = request.get_json() 
+        print(request_json)   
         
         # convert to response json object 
         response = jsonify(request_json)
+
+        # get request object
         response.status_code = 200  
     except:
         exception_message = sys.exc_info()[1]

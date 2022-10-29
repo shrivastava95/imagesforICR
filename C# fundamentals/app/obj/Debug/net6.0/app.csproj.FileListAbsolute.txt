@@ -16,3 +16,11 @@ C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\RestSharp.dll
 C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\obj\Debug\net6.0\app.csproj.CopyComplete
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\System.Drawing.Common.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\AI_semester_6\imagesForICR\imagesforICR\C# fundamentals\app\bin\Debug\net6.0\System.Web.Http.dll
