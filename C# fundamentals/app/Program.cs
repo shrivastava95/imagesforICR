@@ -20,29 +20,22 @@ namespace Console
 			var client = new HttpClient();
 
 			// read the image as a bitmap
-			using (Bitmap image_bmp = new Bitmap(Image.FromFile("findCharacters.png")))
+			using (Bitmap image_bmp = new Bitmap(Image.FromFile("C:/AI_semester_6/imagesForICR/imagesforICR/findCharacters.png")))
 			{
-				// convert bitmap to byte array - using MemoryStream for not writing to hard disk
+				// convert bitmap to byte array - using MemoryStream for not writing to hard disk - https://stackoverflow.com/questions/12645705/c-bitmap-to-byte-array
 				using (var memoryStream = new MemoryStream())
 				{
 
 					image_bmp.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
-					var content = JsonConvert.SerializeObject(
-						new {
-							message = "BRUHHHHHHHHH",
+					var response = client.PostAsJsonAsync( "http://localhost:5000/api/v1.0/process_img",  
+						new  {
+							message = "",
 							content = Convert.ToBase64String(memoryStream.ToArray()),   
 							// converting bitmap to byte array -  https://stackoverflow.com/questions/12645705/c-bitmap-to-byte-array
 							// sending request using PostAsJsonAsync - https://stackoverflow.com/questions/15205389/get-response-from-postasjsonasync
-						    // sending request using PostAsync - https://stackoverflow.com/questions/36625881/how-do-i-pass-an-object-to-httpclient-postasync-and-serialize-as-a-json-body
 						}
-					);
-					var buffer = System.Text.Encoding.UTF8.GetBytes(content);
-					var byteContent = new ByteArrayContent(buffer);
-					byteContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
-
-					var response = client.PostAsync( "http://127.0.0.1:5000/api/v1.0/process_img", byteContent);
-					var result = response.Result;
-					System.Console.WriteLine(result.ToString());
+					).Result;
+					System.Console.WriteLine(response.ToString());
 				}                               
 			}
 		}
