@@ -28,14 +28,16 @@ namespace Console
 
 					image_bmp.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Jpeg);
 					var response = client.PostAsJsonAsync( "http://localhost:5000/api/v1.0/process_img",  
+					// var response = client.PostAsJsonAsync( "http://172.31.48.20:5000/api/v1.0/process_img",
 						new  {
 							message = "",
 							content = Convert.ToBase64String(memoryStream.ToArray()),   
 							// converting bitmap to byte array -  https://stackoverflow.com/questions/12645705/c-bitmap-to-byte-array
 							// sending request using PostAsJsonAsync - https://stackoverflow.com/questions/15205389/get-response-from-postasjsonasync
 						}
-					).Result;
-					System.Console.WriteLine(response.ToString());
+					);
+					System.Console.WriteLine(response.Result.ToString());
+					System.Console.WriteLine(response.Result.RequestMessage);
 				}                               
 			}
 		}
