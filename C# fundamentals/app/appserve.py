@@ -15,7 +15,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision.datasets import ImageFolder
 from torchvision import transforms
 
-from utils import ICRclassifier
+from utils import ICRclassifier, timeit
 
 
 save_path = "model_state_dict.pt"
@@ -45,6 +45,21 @@ tfms = transforms.Compose([
 ])
 print('loaded image transforms...')
 
+@timeit
+def classify_b64(image_b64):
+    image_bytes = base64.b64decode(image_b64)   # im_bytes is a binary image
+    image_file = BytesIO(image_bytes)  # convert image to file-like object
+    image_PIL = Image.open(image_file)   # img is now PIL Image object
+
+    image = tfms(image_PIL)
+    image = image.unsqueeze(0)
+    image = image.to(device)
+    scores = model(image)
+    preds = scores.argmax(dim=1)
+    return preds
+
+
+@timeit
 def classify_PIL(image_PIL):
     image = tfms(image_PIL)
     image = image.unsqueeze(0)
@@ -53,6 +68,7 @@ def classify_PIL(image_PIL):
     preds = scores.argmax(dim=1)
     return preds
 
+@timeit
 def b64_to_PIL(image_b64):
     image_bytes = base64.b64decode(image_b64)   # im_bytes is a binary image
     image_file = BytesIO(image_bytes)  # convert image to file-like object
@@ -63,9 +79,12 @@ app = Flask(__name__)
 
 @app.route("/api/v1.0/process_img", methods=["POST"])
 def process_img_post():
+    
     global model
     try:  
         request_json = request.get_json() 
+
+        # for debugging - remove later
         with open('request_test.json', 'w') as out_file:
             json.dump(request_json, out_file)
 
@@ -74,9 +93,10 @@ def process_img_post():
         # read the image from payload
         image_b64 = request_json['content']
 
-        # convert image to PIL and classify
+        # # convert image to PIL and classify
         image_PIL = b64_to_PIL(image_b64)
         image_pred = classify_PIL(image_PIL)
+        # image_pred = classify_b64(image_b64)
 
         # add predictions to response JSON object
         print('preds:', image_pred)
